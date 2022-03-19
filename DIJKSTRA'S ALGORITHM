@@ -1,4 +1,4 @@
-// DIJKSTRA'S ALGORITHM(SINGLE SOURCE SHORTEST PATH TO ALL VERTICES)
+// DIJKSTRA'S ALGORITHM
 // TC=O(V+E)LOG(V) AND SC=O(V+E)+O(V)+O(V) FOR ADJACENCY LIST,DIST ARRAY,PRIORITY QUEUE
 #include<bits/stdc++.h>
 using namespace std;
@@ -11,6 +11,8 @@ void dijkstra(int src,vector<vector<pair<int,int>>>graph,vector<int>&dist)
     {
         auto x=pq.top();
         pq.pop();
+        if(x.first>dist[x.second])
+            continue;
         for(auto it:graph[x.second])
         {
             if(dist[it.first]>dist[x.second]+it.second)
